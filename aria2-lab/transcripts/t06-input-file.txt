@@ -1,0 +1,61 @@
+$ cat urls.txt
+http://127.0.0.1:8377/notes.txt
+  out=notes-copy.txt
+http://127.0.0.1:8377/data.csv
+  dir=spreadsheet
+
+$ aria2c -i urls.txt
+
+10/28 18:21:14 [NOTICE] Downloading 2 item(s)
+
+10/28 18:21:14 [NOTICE] Download complete: spreadsheet/data.csv
+
+10/28 18:21:14 [NOTICE] Download complete: /home/hatch/workspace/build-check/aria2-scratch/work/t06/notes-copy.txt
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+90a22a|OK  |   1.7KiB/s|spreadsheet/data.csv
+ca1b14|OK  |     464B/s|/home/hatch/workspace/build-check/aria2-scratch/work/t06/notes-copy.txt
+
+Status Legend:
+(OK):download completed.
+
+$ find . -type f | sort
+./notes-copy.txt
+./spreadsheet/data.csv
+./urls.txt
+
+$ aria2c http://127.0.0.1:8377/hello.txt http://127.0.0.1:8377/notes.txt
+
+10/28 18:21:14 [NOTICE] Downloading 1 item(s)
+
+10/28 18:21:14 [NOTICE] Download complete: /home/hatch/workspace/build-check/aria2-scratch/work/t06/hello.txt
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+f6773d|OK  |   1.1KiB/s|/home/hatch/workspace/build-check/aria2-scratch/work/t06/hello.txt
+
+Status Legend:
+(OK):download completed.
+$ aria2c -Z http://127.0.0.1:8377/hello.txt http://127.0.0.1:8377/notes.txt
+
+10/28 18:21:20 [NOTICE] Downloading 2 item(s)
+
+10/28 18:21:20 [NOTICE] Download complete: /home/hatch/workspace/build-check/aria2-scratch/work/t06/zmode/hello.txt
+
+10/28 18:21:20 [NOTICE] Download complete: /home/hatch/workspace/build-check/aria2-scratch/work/t06/zmode/notes.txt
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+b4b928|OK  |   3.8KiB/s|/home/hatch/workspace/build-check/aria2-scratch/work/t06/zmode/hello.txt
+b29b73|OK  |   1.6KiB/s|/home/hatch/workspace/build-check/aria2-scratch/work/t06/zmode/notes.txt
+
+Status Legend:
+(OK):download completed.
+
+$ ls
+hello.txt
+notes.txt

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metalink xmlns="urn:ietf:params:xml:ns:metalink">
+  <file name="hello.txt">
+    <size>117</size>
+    <hash type="sha-256">90ad06db91e4a1dfeb4868041a3f51a060abac50a91cbcbc54f0e4f2f0dc3ff4</hash>
+    <url>http://127.0.0.1:8377/hello.txt</url>
+  </file>
+</metalink>

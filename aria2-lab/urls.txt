@@ -1,0 +1,4 @@
+http://127.0.0.1:8377/notes.txt
+  out=notes-copy.txt
+http://127.0.0.1:8377/data.csv
+  dir=spreadsheet

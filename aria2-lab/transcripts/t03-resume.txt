@@ -1,0 +1,35 @@
+$ aria2c --max-download-limit=256K http://127.0.0.1:8377/bigfile.bin &
+$ sleep 5; kill 65806   # interrupt it the way a dropped line or Ctrl-C would
+10/28 18:20:42 [NOTICE] Downloading 1 item(s)
+10/28 18:20:48 [NOTICE] Emergency shutdown sequence commencing...
+10/28 18:20:48 [NOTICE] Download GID#d0a1bc649d37ffb8 not complete: /home/hatch/workspace/build-check/aria2-scratch/work/t03/bigfile.bin
+
+$ ls -la
+total 1056
+drwxrwx--- 1 root root      56 Oct 28 18:20 .
+drwxrwx--- 1 root root      18 Oct 28 18:20 ..
+-rw-rw---- 1 root root 1070080 Oct 28 18:20 bigfile.bin
+-rw-rw---- 1 root root      59 Oct 28 18:20 bigfile.bin.aria2
+
+$ aria2c -c http://127.0.0.1:8377/bigfile.bin
+
+10/28 18:20:49 [NOTICE] Downloading 1 item(s)
+
+10/28 18:20:49 [NOTICE] Download complete: /home/hatch/workspace/build-check/aria2-scratch/work/t03/bigfile.bin
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+8863e3|OK  |    34MiB/s|/home/hatch/workspace/build-check/aria2-scratch/work/t03/bigfile.bin
+
+Status Legend:
+(OK):download completed.
+
+$ ls -la
+total 4100
+drwxrwx--- 1 root root      22 Oct 28 18:20 .
+drwxrwx--- 1 root root      18 Oct 28 18:20 ..
+-rw-rw---- 1 root root 4194304 Oct 28 18:20 bigfile.bin
+
+$ sha256sum bigfile.bin
+7213df7e265412054c3cbcc23f9b592f5e3d61347d35f602946499fc483c9862  bigfile.bin

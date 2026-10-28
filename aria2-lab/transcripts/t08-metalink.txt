@@ -1,0 +1,46 @@
+$ aria2c http://127.0.0.1:8377/hello.txt.meta4
+
+10/28 18:22:11 [NOTICE] Downloading 1 item(s)
+
+10/28 18:22:11 [NOTICE] Download complete: /home/hatch/workspace/build-check/aria2-scratch/work/t08/hello.txt.meta4
+
+10/28 18:22:11 [NOTICE] Verification finished successfully. file=/home/hatch/workspace/build-check/aria2-scratch/work/t08/hello.txt
+
+10/28 18:22:11 [NOTICE] Download complete: /home/hatch/workspace/build-check/aria2-scratch/work/t08/hello.txt
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+d46336|OK  |    10KiB/s|/home/hatch/workspace/build-check/aria2-scratch/work/t08/hello.txt.meta4
+c146d6|OK  |   2.1KiB/s|/home/hatch/workspace/build-check/aria2-scratch/work/t08/hello.txt
+
+Status Legend:
+(OK):download completed.
+exit: 0
+
+$ cat hello.txt
+Hello from the aria2 lab.
+This small file is the first download.
+It is meant to be fetched, read, and fetched again.
+$ aria2c -d tampered http://127.0.0.1:8377/tampered.txt.meta4
+
+10/28 18:22:11 [NOTICE] Downloading 1 item(s)
+
+10/28 18:22:11 [NOTICE] Download complete: tampered/tampered.txt.meta4
+
+10/28 18:22:11 [ERROR] Checksum error detected. file=tampered/hello.txt
+
+10/28 18:22:11 [NOTICE] Download GID#2194be2a07c5aa91 not complete: tampered/hello.txt
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+377398|OK  |   9.8KiB/s|tampered/tampered.txt.meta4
+2194be|ERR |   1.1KiB/s|tampered/hello.txt
+
+Status Legend:
+(OK):download completed.(ERR):error occurred.
+
+aria2 will resume download if the transfer is restarted.
+If there are any errors, then see the log file. See '-l' option in help/man page for details.
+exit: 32

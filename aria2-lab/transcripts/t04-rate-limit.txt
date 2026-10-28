@@ -1,0 +1,25 @@
+$ time aria2c --max-download-limit=512K http://127.0.0.1:8377/bigfile.bin
+
+10/28 18:20:54 [NOTICE] Downloading 1 item(s)
+[#851978 0B/4.0MiB(0%) CN:1 DL:15KiB ETA:4m18s]
+[#851978 512KiB/4.0MiB(12%) CN:1 DL:258KiB ETA:13s]
+[#851978 1.0MiB/4.0MiB(25%) CN:1 DL:346KiB ETA:8s]
+[#851978 1.5MiB/4.0MiB(37%) CN:1 DL:387KiB ETA:6s]
+[#851978 2.0MiB/4.0MiB(50%) CN:1 DL:412KiB ETA:4s]
+[#851978 2.5MiB/4.0MiB(62%) CN:1 DL:428KiB ETA:3s]
+[#851978 3.0MiB/4.0MiB(75%) CN:1 DL:440KiB ETA:2s]
+[#851978 3.5MiB/4.0MiB(87%) CN:1 DL:449KiB ETA:1s]
+
+10/28 18:21:02 [NOTICE] Download complete: /home/hatch/workspace/build-check/aria2-scratch/work/t04/bigfile.bin
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+851978|OK  |   508KiB/s|/home/hatch/workspace/build-check/aria2-scratch/work/t04/bigfile.bin
+
+Status Legend:
+(OK):download completed.
+
+real	0m8.122s
+user	0m0.016s
+sys	0m0.017s

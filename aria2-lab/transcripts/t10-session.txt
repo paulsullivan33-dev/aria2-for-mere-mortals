@@ -1,0 +1,38 @@
+$ aria2c --save-session=session.txt --max-download-limit=256K http://127.0.0.1:8377/bigfile.bin &
+10/28 18:26:31 [NOTICE] Downloading 1 item(s)
+10/28 18:26:37 [NOTICE] Emergency shutdown sequence commencing...
+10/28 18:26:37 [NOTICE] Download GID#8770cd96ca35d77d not complete: /home/hatch/workspace/build-check/aria2-scratch/work/t10/bigfile.bin
+
+$ cat session.txt
+http://127.0.0.1:8377/bigfile.bin	
+ gid=8770cd96ca35d77d
+ max-download-limit=262144
+$ aria2c -i session.txt -c
+
+10/28 18:26:37 [NOTICE] Downloading 1 item(s)
+[#8770cd 1.0MiB/4.0MiB(25%) CN:1 DL:15KiB ETA:3m13s]
+[#8770cd 1.2MiB/4.0MiB(31%) CN:1 DL:133KiB ETA:20s]
+[#8770cd 1.5MiB/4.0MiB(37%) CN:1 DL:172KiB ETA:14s]
+[#8770cd 1.7MiB/4.0MiB(44%) CN:1 DL:194KiB ETA:11s]
+[#8770cd 2.0MiB/4.0MiB(50%) CN:1 DL:205KiB ETA:9s]
+[#8770cd 2.2MiB/4.0MiB(56%) CN:1 DL:215KiB ETA:8s]
+[#8770cd 2.5MiB/4.0MiB(62%) CN:1 DL:221KiB ETA:6s]
+[#8770cd 2.7MiB/4.0MiB(69%) CN:1 DL:225KiB ETA:5s]
+[#8770cd 3.0MiB/4.0MiB(75%) CN:1 DL:228KiB ETA:4s]
+[#8770cd 3.2MiB/4.0MiB(81%) CN:1 DL:255KiB ETA:2s]
+[#8770cd 3.2MiB/4.0MiB(82%) CN:1 DL:229KiB ETA:3s]
+[#8770cd 3.5MiB/4.0MiB(88%) CN:1 DL:229KiB ETA:2s]
+[#8770cd 3.7MiB/4.0MiB(94%) CN:1 DL:227KiB]
+
+10/28 18:26:50 [NOTICE] Download complete: /home/hatch/workspace/build-check/aria2-scratch/work/t10/bigfile.bin
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+8770cd|OK  |   233KiB/s|/home/hatch/workspace/build-check/aria2-scratch/work/t10/bigfile.bin
+
+Status Legend:
+(OK):download completed.
+
+$ sha256sum bigfile.bin
+7213df7e265412054c3cbcc23f9b592f5e3d61347d35f602946499fc483c9862  bigfile.bin

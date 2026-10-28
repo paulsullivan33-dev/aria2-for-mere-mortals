@@ -1,0 +1,46 @@
+aria2 everyday commands
+=======================
+
+One file:
+
+    aria2c https://example.org/file.iso
+
+A file, but say where it goes and what it is called:
+
+    aria2c -d ~/Downloads -o file.iso https://example.org/file.iso
+
+Split one file across four connections (needs a server that
+answers Range requests):
+
+    aria2c -x4 -s4 https://example.org/file.iso
+
+Several different files, one after another:
+
+    aria2c -Z https://example.org/a.txt https://example.org/b.txt
+
+A whole list of files, with per-file options written under
+each address in the list:
+
+    aria2c -i urls.txt
+
+Pick up a download that stopped:
+
+    aria2c -c https://example.org/file.iso
+
+Be polite to a small server (cap the speed, K means KiB/s):
+
+    aria2c --max-download-limit=512K https://example.org/file.iso
+
+Only accept the file if its SHA-256 matches:
+
+    aria2c --checksum=sha-256=<hash> https://example.org/file.iso
+
+Run as a background service other programs can drive
+(RPC on loopback, protected by a secret):
+
+    aria2c --enable-rpc --rpc-secret=<secret> --daemon=true
+
+Save whatever is still unfinished, to resume it next time:
+
+    aria2c --save-session=session.txt -i urls.txt
+    aria2c -i session.txt -c

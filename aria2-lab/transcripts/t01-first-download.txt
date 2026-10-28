@@ -1,0 +1,24 @@
+$ aria2c http://127.0.0.1:8377/hello.txt
+
+10/28 18:20:04 [NOTICE] Downloading 1 item(s)
+
+10/28 18:20:04 [NOTICE] Download complete: /home/hatch/workspace/build-check/aria2-scratch/work/t01/hello.txt
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+746c37|OK  |   3.5KiB/s|/home/hatch/workspace/build-check/aria2-scratch/work/t01/hello.txt
+
+Status Legend:
+(OK):download completed.
+
+$ ls -la
+total 8
+drwxrwx--- 1 root root  18 Oct 28 18:20 .
+drwxrwx--- 1 root root   6 Oct 28 18:20 ..
+-rw-rw---- 1 root root 117 Oct 28 18:20 hello.txt
+
+$ cat hello.txt
+Hello from the aria2 lab.
+This small file is the first download.
+It is meant to be fetched, read, and fetched again.

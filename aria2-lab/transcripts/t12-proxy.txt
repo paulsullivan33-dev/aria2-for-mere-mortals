@@ -1,0 +1,20 @@
+$ http_proxy=http://127.0.0.1:9999 no_proxy= aria2c http://127.0.0.1:8377/hello.txt
+
+10/28 18:31:54 [NOTICE] Downloading 1 item(s)
+
+10/28 18:31:54 [ERROR] CUID#7 - Download aborted. URI=http://127.0.0.1:8377/hello.txt
+Exception: [AbstractCommand.cc:856] errorCode=1 Failed to establish connection, cause: Connection refused
+
+10/28 18:31:54 [NOTICE] Download GID#115f2cdec620055c not complete: 
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+115f2c|ERR |       0B/s|http://127.0.0.1:8377/hello.txt
+
+Status Legend:
+(ERR):error occurred.
+
+aria2 will resume download if the transfer is restarted.
+If there are any errors, then see the log file. See '-l' option in help/man page for details.
+exit: 1

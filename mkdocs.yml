@@ -1,0 +1,28 @@
+site_name: aria2 for Mere Mortals
+site_description: Downloading files from the command line with one tool for HTTP, FTP, BitTorrent and Metalink. Fetching several files at once, splitting one file across connections, resuming what stopped, checking hashes, working through a list of addresses, and driving it all from another program, with the limits stated plainly.
+site_url: https://paulsullivan33-dev.github.io/aria2-for-mere-mortals/
+copyright: 'Part of <a href="https://paulsullivan33-dev.github.io/mere-mortals/">For Mere Mortals</a> · Text <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, code MIT'
+
+# Guides live at the repo root (nice for GitHub browsing).
+# The deploy workflow copies them into docs/ before building.
+theme:
+  name: material
+
+nav:
+  - Home: index.md
+  - What aria2 Is: what-aria2-is.md
+  - The Moving Parts: the-moving-parts.md
+  - Installing aria2: installing-aria2.md
+  - Your First Download: your-first-download.md
+  - Parallel and Segmented Downloads: parallel-and-segmented.md
+  - Resuming Downloads: resuming-downloads.md
+  - Checking What Arrived: checking-what-arrived.md
+  - Lists of Downloads: lists-of-downloads.md
+  - Metalink and Torrents: metalink-and-torrents.md
+  - The RPC Interface: the-rpc-interface.md
+  - Recipes: recipes.md
+  - The Neighbours: the-neighbours.md
+  - Limits: limits.md
+  - Troubleshooting: troubleshooting.md
+  - Glossary: glossary.md
+  - Writing Criteria: criteria.md

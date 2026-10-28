@@ -1,0 +1,26 @@
+$ aria2c -x4 -s4 -k1M http://127.0.0.1:8377/bigfile.bin
+
+10/28 18:20:08 [NOTICE] Downloading 1 item(s)
+
+10/28 18:20:08 [NOTICE] Download complete: /home/hatch/workspace/build-check/aria2-scratch/work/t02/bigfile.bin
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+5fa271|OK  |   100MiB/s|/home/hatch/workspace/build-check/aria2-scratch/work/t02/bigfile.bin
+
+Status Legend:
+(OK):download completed.
+
+$ sha256sum bigfile.bin
+7213df7e265412054c3cbcc23f9b592f5e3d61347d35f602946499fc483c9862  bigfile.bin
+$ sha256sum ../../fixtures/serve/bigfile.bin
+7213df7e265412054c3cbcc23f9b592f5e3d61347d35f602946499fc483c9862  ../../fixtures/serve/bigfile.bin
+$ grep bigfile server.log   # what the server saw
+GET /bigfile.bin Range=- -> 200 bytes 0-4194303
+GET /bigfile.bin Range=bytes=2097152-3145727 -> 206 bytes 2097152-3145727
+GET /bigfile.bin Range=bytes=1048576-2097151 -> 206 bytes 1048576-2097151
+GET /bigfile.bin Range=bytes=3145728-4194303 -> 206 bytes 3145728-4194303
+
+$ grep -c '206' (new log lines)
+3

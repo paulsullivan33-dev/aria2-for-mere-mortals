@@ -1,0 +1,7 @@
+$ apt-cache policy aria2
+aria2:
+  Installed: (none)
+  Candidate: 1.37.0+debian-1build3
+  Version table:
+     1.37.0+debian-1build3 500
+        500 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 Packages

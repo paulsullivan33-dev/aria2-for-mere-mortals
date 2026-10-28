@@ -1,0 +1,43 @@
+$ aria2c --checksum=sha-256=90ad06db91e4a1dfeb4868041a3f51a060abac50a91cbcbc54f0e4f2f0dc3ff4 http://127.0.0.1:8377/hello.txt
+
+10/28 18:21:02 [NOTICE] Downloading 1 item(s)
+
+10/28 18:21:02 [NOTICE] Verification finished successfully. file=/home/hatch/workspace/build-check/aria2-scratch/work/t05/hello.txt
+
+10/28 18:21:02 [NOTICE] Download complete: /home/hatch/workspace/build-check/aria2-scratch/work/t05/hello.txt
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+fcfa56|OK  |   3.1KiB/s|/home/hatch/workspace/build-check/aria2-scratch/work/t05/hello.txt
+
+Status Legend:
+(OK):download completed.
+exit: 0
+
+$ aria2c --checksum=sha-256=0000000000000000000000000000000000000000000000000000000000000000 -d bad http://127.0.0.1:8377/hello.txt
+
+10/28 18:21:02 [NOTICE] Downloading 1 item(s)
+
+10/28 18:21:02 [ERROR] Checksum error detected. file=bad/hello.txt
+
+10/28 18:21:02 [NOTICE] Download GID#f328e5d2c4ee9c6a not complete: bad/hello.txt
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+f328e5|ERR |   3.0KiB/s|bad/hello.txt
+
+Status Legend:
+(ERR):error occurred.
+
+aria2 will resume download if the transfer is restarted.
+If there are any errors, then see the log file. See '-l' option in help/man page for details.
+exit: 32
+
+$ ls -la bad
+total 8
+drwxrwx--- 1 root root  48 Oct 28 18:21 .
+drwxrwx--- 1 root root  24 Oct 28 18:21 ..
+-rw-rw---- 1 root root 117 Oct 28 18:21 hello.txt
+-rw-rw---- 1 root root  39 Oct 28 18:21 hello.txt.aria2

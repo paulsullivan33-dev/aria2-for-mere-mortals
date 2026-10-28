@@ -1,0 +1,47 @@
+$ aria2c http://127.0.0.1:8377/no-such-file.txt
+
+10/28 18:22:15 [NOTICE] Downloading 1 item(s)
+
+10/28 18:22:15 [ERROR] CUID#7 - Download aborted. URI=http://127.0.0.1:8377/no-such-file.txt
+Exception: [AbstractCommand.cc:351] errorCode=3 URI=http://127.0.0.1:8377/no-such-file.txt
+  -> [HttpSkipResponseCommand.cc:218] errorCode=3 Resource not found
+
+10/28 18:22:15 [NOTICE] Download GID#fd244d17272f3467 not complete: 
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+fd244d|ERR |       0B/s|http://127.0.0.1:8377/no-such-file.txt
+
+Status Legend:
+(ERR):error occurred.
+
+aria2 will resume download if the transfer is restarted.
+If there are any errors, then see the log file. See '-l' option in help/man page for details.
+exit: 3
+
+$ aria2c http://127.0.0.1:9999/hello.txt   # nothing listens on port 9999
+
+10/28 18:22:15 [NOTICE] Downloading 1 item(s)
+
+10/28 18:22:15 [ERROR] CUID#7 - Download aborted. URI=http://127.0.0.1:9999/hello.txt
+Exception: [AbstractCommand.cc:856] errorCode=1 Failed to establish connection, cause: Connection refused
+
+10/28 18:22:15 [NOTICE] Download GID#3030f594a67cb4ab not complete: 
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+3030f5|ERR |        n/a|http://127.0.0.1:9999/hello.txt
+
+Status Legend:
+(ERR):error occurred.
+
+aria2 will resume download if the transfer is restarted.
+If there are any errors, then see the log file. See '-l' option in help/man page for details.
+exit: 1
+
+$ ls -la
+total 0
+drwxrwx--- 1 root root  0 Oct 28 18:22 .
+drwxrwx--- 1 root root 54 Oct 28 18:22 ..

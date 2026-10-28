@@ -1,0 +1,33 @@
+$ aria2c http://127.0.0.1:8377/hello.txt   # first time
+
+10/28 18:28:42 [NOTICE] Downloading 1 item(s)
+
+10/28 18:28:42 [NOTICE] Download complete: /home/hatch/workspace/build-check/aria2-scratch/work/t11/hello.txt
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+05ea4e|OK  |   3.8KiB/s|/home/hatch/workspace/build-check/aria2-scratch/work/t11/hello.txt
+
+Status Legend:
+(OK):download completed.
+
+$ aria2c http://127.0.0.1:8377/hello.txt   # second time, same folder
+
+10/28 18:28:42 [NOTICE] Downloading 1 item(s)
+
+10/28 18:28:42 [NOTICE] File already exists. Renamed to /home/hatch/workspace/build-check/aria2-scratch/work/t11/hello.1.txt.
+
+10/28 18:28:42 [NOTICE] Download complete: /home/hatch/workspace/build-check/aria2-scratch/work/t11/hello.1.txt
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+b3bae6|OK  |   3.0KiB/s|/home/hatch/workspace/build-check/aria2-scratch/work/t11/hello.1.txt
+
+Status Legend:
+(OK):download completed.
+
+$ ls
+hello.1.txt
+hello.txt

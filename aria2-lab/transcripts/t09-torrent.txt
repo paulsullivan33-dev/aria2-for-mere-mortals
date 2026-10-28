@@ -1,0 +1,85 @@
+$ aria2c ../../../bigfile.torrent --listen-port=6882 --enable-dht=false --enable-peer-exchange=false --bt-enable-lpd=false
+
+10/28 18:24:31 [NOTICE] Downloading 1 item(s)
+
+10/28 18:24:31 [NOTICE] IPv4 BitTorrent: listening on TCP port 6882
+
+10/28 18:24:31 [NOTICE] IPv6 BitTorrent: listening on TCP port 6882
+[#0a93c2 0B/4.0MiB(0%) CN:2 SD:0 DL:0B]
+[#0a93c2 SEED(0.0) CN:1 SD:0]
+[#0a93c2 SEED(0.0) CN:2 SD:0]
+[... the same SEED line repeats, about once a second, while the
+     finished download keeps seeding; the transfer itself took
+     under a second on loopback ...]
+
+[#0a93c2 SEED(0.0) CN:0 SD:0]
+ *** Download Progress Summary as of Wed Oct 28 18:25:32 2026 *** 
+===============================================================================
+[#0a93c2 SEED(0.0) CN:0 SD:0]
+FILE: /home/hatch/workspace/build-check/aria2-scratch/work/t09/leech/bigfile.bin
+-------------------------------------------------------------------------------
+
+[#0a93c2 SEED(0.0) CN:0 SD:0]
+[#0a93c2 SEED(0.0) CN:0 SD:0]
+[#0a93c2 SEED(0.0) CN:0 SD:0]
+[#0a93c2 SEED(0.0) CN:2 SD:0]
+[#0a93c2 SEED(0.0) CN:2 SD:0]
+[#0a93c2 SEED(0.0) CN:0 SD:0]
+[#0a93c2 SEED(0.0) CN:0 SD:0]
+[#0a93c2 SEED(0.0) CN:0 SD:0]
+[#0a93c2 SEED(0.0) CN:0 SD:0]
+[#0a93c2 SEED(0.0) CN:0 SD:0]
+[#0a93c2 SEED(0.0) CN:0 SD:0]
+[#0a93c2 SEED(0.0) CN:0 SD:0]
+[#0a93c2 SEED(0.0) CN:0 SD:0]
+[#0a93c2 SEED(0.0) CN:0 SD:0]
+[#0a93c2 SEED(0.0) CN:0 SD:0]
+[#0a93c2 SEED(0.0) CN:0 SD:0]
+[#0a93c2 SEED(0.0) CN:0 SD:0]
+[#0a93c2 SEED(0.0) CN:0 SD:0]
+[#0a93c2 SEED(0.0) CN:0 SD:0]
+[#0a93c2 SEED(0.0) CN:0 SD:0]
+[#0a93c2 SEED(0.0) CN:0 SD:0]
+[#0a93c2 SEED(0.0) CN:0 SD:0]
+[#0a93c2 SEED(0.0) CN:0 SD:0]
+[#0a93c2 SEED(0.0) CN:0 SD:0]
+[#0a93c2 SEED(0.0) CN:0 SD:0]
+[#0a93c2 SEED(0.0) CN:0 SD:0]
+[#0a93c2 SEED(0.0) CN:0 SD:0]
+[#0a93c2 SEED(0.0) CN:0 SD:0]
+[#0a93c2 SEED(0.0) CN:0 SD:0]
+[#0a93c2 SEED(0.0) CN:0 SD:0]
+[#0a93c2 SEED(0.0) CN:0 SD:0]
+
+10/28 18:26:02 [NOTICE] Emergency shutdown sequence commencing...
+
+10/28 18:26:02 [NOTICE] Download complete: /home/hatch/workspace/build-check/aria2-scratch/work/t09/leech/bigfile.bin
+
+10/28 18:26:02 [NOTICE] Your share ratio was 0.0, uploaded/downloaded=0B/4.0MiB
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+0a93c2|OK  |   2.2MiB/s|/home/hatch/workspace/build-check/aria2-scratch/work/t09/leech/bigfile.bin
+
+Status Legend:
+(OK):download completed.
+exit: 124
+
+$ sha256sum bigfile.bin
+7213df7e265412054c3cbcc23f9b592f5e3d61347d35f602946499fc483c9862  bigfile.bin
+
+# The other side of the same transfer -- the seeder's own output
+# (aria2c in the seed folder, started with --bt-seed-unverified=true):
+
+[#322701 SEED(1.0) CN:2 SD:0 UL:3.8MiB(4.0MiB)]
+
+10/28 18:24:32 [NOTICE] Seeding is over.
+10/28 18:24:33 [NOTICE] Download complete: /home/hatch/workspace/build-check/aria2-scratch/work/t09/seed/bigfile.bin
+10/28 18:24:33 [NOTICE] Your share ratio was 1.0, uploaded/downloaded=4.0MiB/4.0MiB
+
+# And the tracker's log of the whole exchange:
+
+announce from 127.0.0.1:6881 event=started peers=1
+announce from 127.0.0.1:6882 event=started peers=2
+announce from 127.0.0.1:6882 event=completed peers=2

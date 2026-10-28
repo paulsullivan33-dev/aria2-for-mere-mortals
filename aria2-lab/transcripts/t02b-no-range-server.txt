@@ -1,0 +1,17 @@
+$ python3 -m http.server 8378   # the standard library server, on the same fixtures
+$ aria2c -x4 -s4 http://127.0.0.1:8378/bigfile.bin
+
+10/28 18:22:23 [NOTICE] Downloading 1 item(s)
+
+10/28 18:22:23 [NOTICE] Download complete: /home/hatch/workspace/build-check/aria2-scratch/work/t02b/bigfile.bin
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+0bf237|OK  |   114MiB/s|/home/hatch/workspace/build-check/aria2-scratch/work/t02b/bigfile.bin
+
+Status Legend:
+(OK):download completed.
+
+$ sha256sum bigfile.bin
+7213df7e265412054c3cbcc23f9b592f5e3d61347d35f602946499fc483c9862  bigfile.bin

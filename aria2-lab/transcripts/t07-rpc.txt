@@ -1,0 +1,81 @@
+$ aria2c --enable-rpc --rpc-listen-port=6800 --rpc-secret=labsecret --daemon=true -d work/t07
+
+$ curl ... aria2.getVersion
+{
+    "id": "1",
+    "jsonrpc": "2.0",
+    "result": {
+        "enabledFeatures": [
+            "Async DNS",
+            "BitTorrent",
+            "Firefox3 Cookie",
+            "GZip",
+            "HTTPS",
+            "Message Digest",
+            "Metalink",
+            "XML-RPC",
+            "SFTP"
+        ],
+        "version": "1.37.0"
+    }
+}
+$ curl ... aria2.addUri  [["http://127.0.0.1:8377/hello.txt"]]
+{
+    "id": "2",
+    "jsonrpc": "2.0",
+    "result": "82d11b2f0c72cabc"
+}
+$ curl ... aria2.tellStatus  ["82d11b2f0c72cabc"]
+{
+    "id": "3",
+    "jsonrpc": "2.0",
+    "result": {
+        "completedLength": "117",
+        "files": [
+            {
+                "completedLength": "117",
+                "index": "1",
+                "length": "117",
+                "path": "/home/hatch/workspace/build-check/aria2-scratch/work/t07/hello.txt",
+                "selected": "true",
+                "uris": [
+                    {
+                        "status": "used",
+                        "uri": "http://127.0.0.1:8377/hello.txt"
+                    },
+                    {
+                        "status": "waiting",
+                        "uri": "http://127.0.0.1:8377/hello.txt"
+                    }
+                ]
+            }
+        ],
+        "status": "complete",
+        "totalLength": "117"
+    }
+}
+
+$ cat work/t07/hello.txt
+Hello from the aria2 lab.
+This small file is the first download.
+It is meant to be fetched, read, and fetched again.
+$ curl ... aria2.getVersion   # the same call WITHOUT the token
+{
+    "id": "4",
+    "jsonrpc": "2.0",
+    "error": {
+        "code": 1,
+        "message": "Unauthorized"
+    }
+}
+$ curl ... aria2.shutdown
+{
+    "id": "5",
+    "jsonrpc": "2.0",
+    "result": "OK"
+}
+
+$ curl http://127.0.0.1:6800/jsonrpc   # after shutdown
+{"id":null,"jsonrpc":"2.0","error":{"code":-32600,"message":"Invalid Request."}}curl exit: 0
+$ sleep 3; curl http://127.0.0.1:6800/jsonrpc   # shutdown is graceful, not instant; a few seconds later
+curl exit: 7
